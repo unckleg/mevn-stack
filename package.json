@@ -1,0 +1,31 @@
+{
+  "name": "mevn-stack",
+  "version": "1.0.0",
+  "description": "MEVN Stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "consign": "^0.1.6",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "module-alias": "^2.1.0",
+    "mongoose": "^5.2.5",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@Admin": "./services/app/Admin",
+    "@Models": "./services/app/Admin/models/bootstrap.js",
+    "@AdminAPI": "./services/config/app.js",
+    "@config": "./services/config/index.js"
+  }
+}
