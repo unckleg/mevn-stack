@@ -12,7 +12,7 @@ actions.login = (User) => (req, res) => {
         if (!user) {
             res.status(401).send({
                 success: false,
-                message: 'Authentication failed. User not found.'
+                message: 'You have entered an invalid username or password.'
             });
 
             return;
@@ -23,7 +23,7 @@ actions.login = (User) => (req, res) => {
                 const token = jwt.sign({user}, config.secret);
                 res.json({
                     success: true,
-                    message: 'Token granted',
+                    message: 'Token successfully granted.',
                     token,
                     user: user
                 });
@@ -31,7 +31,7 @@ actions.login = (User) => (req, res) => {
 
             res.status(401).send({
                 success: false,
-                message: 'Authentication failed. Wrong password.'
+                message: 'You have entered an invalid username or password.'
             });
         });
     });
