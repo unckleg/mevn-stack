@@ -1,0 +1,78 @@
+<template>
+    <aside id="aside" class="app-aside hidden-xs bg-dark">
+        <div class="aside-wrap">
+            <div class="navi-wrap">
+                <nav class="navi clearfix">
+                    <ul class="nav">
+                        <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                            <span>CMS</span>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="glyphicon glyphicon-stats icon"></i>
+                                <span class="font-bold">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="line dk" style="height: 2px;"></li>
+                        <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                            <span>Site Content</span>
+                        </li>
+                        <li>
+                            <a>
+                                <b class="badge bg-info pull-right">9</b>
+                                <i class="glyphicon glyphicon-edit icon"></i>
+                                <span >Posts</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="glyphicon glyphicon-th-large icon"></i>
+                                <span >Pages</span>
+                            </a>
+                        </li>
+
+                        <li class="line dk"></li>
+                        <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                            <span>Appearance</span>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="glyphicon glyphicon-tint"></i>
+                                <span >Themes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="glyphicon glyphicon-list"></i>
+                                <span >Menus</span>
+                            </a>
+                        </li>
+
+                        <li class="line dk"></li>
+                        <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                            <span>Administration</span>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span >Users</span>
+                            </a>
+                        </li>
+
+                        <li class="line dk"></li>
+                        <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                            <span>Settings</span>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="glyphicon glyphicon-wrench"></i>
+                                <span >Site</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </aside>
+</template>

@@ -1,8 +1,9 @@
 import jquery from 'jquery';
 import Vue from 'vue'
-import App from './App'
 import router from './router'
 import store from './store';
+import helpers from './service/util';
+import App from './App';
 
 window.$ = jquery;
 window.jQuery = jquery;
@@ -21,15 +22,21 @@ new Vue({
     router,
     store,
 
-    render: (h) => h(App),
+    components: {
+        App
+    },
+
+    template: '<App/>',
 
     created() {
         document.title = router.currentRoute.meta.title;
+        helpers.resolveModuleLayout(store, router);
     },
 
     watch: {
        '$route' (to, from) {
             document.title = router.currentRoute.meta.title;
+            helpers.resolveModuleLayout(store, router);
         }
     }
 });

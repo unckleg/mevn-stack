@@ -30,6 +30,6 @@ export default {
             localStorage.removeItem('auth-token');
             delete axios.defaults.headers.common['Authorization'];
             resolve()
-        })
+        });
     }
 };
