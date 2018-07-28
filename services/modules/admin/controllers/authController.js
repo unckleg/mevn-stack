@@ -27,6 +27,8 @@ actions.login = (User) => (req, res) => {
                     token,
                     user: user
                 });
+
+                return;
             }
 
             res.status(401).send({

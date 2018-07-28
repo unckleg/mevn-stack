@@ -23,8 +23,8 @@
   },
   "_moduleAliases": {
     "@root": ".",
-    "@Admin": "./services/app/Admin",
-    "@Models": "./services/app/Admin/models/bootstrap.js",
+    "@Admin": "./services/modules/admin",
+    "@Models": "./services/modules/admin/models",
     "@AdminAPI": "./services/config/app.js",
     "@config": "./services/config/index.js"
   }

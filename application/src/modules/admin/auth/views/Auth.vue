@@ -50,7 +50,8 @@
 </template>
 
 <script>
-    import * as types from './../store/types';
+    import {types} from './../store/types';
+
     export default {
         data () {
             return {
@@ -66,10 +67,10 @@
         methods: {
             authenticate() {
                 const {username, password} = this.user;
-                this.$store.dispatch(this.action('Auth', types.AUTH_REQUEST), {username, password}).then(() => {
+                this.$store.dispatch(types.actions.AUTH_REQUEST, {username, password}).then(() => {
                     this.$router.push({
                         name: 'admin_dashboard'
-                    })
+                    });
                 }).catch(err => {
                     this.message = err.message;
                 });
@@ -77,3 +78,11 @@
         }
     }
 </script>
+
+<style lang="scss">
+    @import './../../../../../static/vendor/animate.css/animate.css';
+    @import './../../../../../static/vendor/font-awesome/css/font-awesome.min.css';
+    @import './../../../../../static/vendor/simple-line-icons/css/simple-line-icons.css';
+    @import './../../../../../static/vendor/jquery/bootstrap/dist/css/bootstrap.css';
+    @import './../../../../../static/css/app.min.css';
+</style>

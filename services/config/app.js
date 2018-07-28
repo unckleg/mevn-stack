@@ -19,10 +19,10 @@ app.use(cors());
 app.use(passport.initialize());
 app.set('secret', config.secret);
 
-consign({ cwd: 'services/app' })
-    .include('Admin/models/bootstrap.js')
-    .then('Admin/controllers')
-    .then('Admin/routes')
+consign({ cwd: 'services/modules' })
+    .include('admin/models/index.js')
+    .then('admin/controllers')
+    .then('admin/routes')
     .into(app)
 ;
 

@@ -1,12 +1,8 @@
-import jquery from 'jquery';
 import Vue from 'vue'
 import router from './router'
 import store from './store';
 import helpers from './service/util';
 import App from './App';
-
-window.$ = jquery;
-window.jQuery = jquery;
 
 Vue.config.productionTip = false;
 

@@ -1,16 +1,17 @@
-import * as types from './types';
+import {_types} from './types';
 
 export default {
-    [types.AUTH_REQUEST]: (state) => {
+    [_types.actions.AUTH_REQUEST]: (state) => {
         state.status = 'loading'
     },
 
-    [types.AUTH_SUCCESS]: (state, token) => {
+    [_types.actions.AUTH_SUCCESS]: (state, token, user) => {
         state.status = 'success';
-        state.token = token
+        state.token = token;
+        state.user = user;
     },
 
-    [types.AUTH_ERROR]: (state) => {
+    [_types.actions.AUTH_ERROR]: (state) => {
         state.status = 'error';
     },
-}
+};
