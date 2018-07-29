@@ -13,6 +13,7 @@
     "body-parser": "^1.18.3",
     "consign": "^0.1.6",
     "cors": "^2.8.4",
+    "datatables": "^1.10.18",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "module-alias": "^2.1.0",
@@ -23,9 +24,9 @@
   },
   "_moduleAliases": {
     "@root": ".",
-    "@Admin": "./services/modules/admin",
-    "@Models": "./services/modules/admin/models",
-    "@AdminAPI": "./services/config/app.js",
-    "@config": "./services/config/index.js"
+    "@Admin": "./server/modules/admin",
+    "@Models": "./server/modules/admin/models",
+    "@AdminAPI": "./server/config/app.js",
+    "@config": "./server/config/index.js"
   }
 }
