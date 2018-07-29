@@ -7,6 +7,8 @@
 <script>
     import Admin from './modules/admin/components/Layout'
     import Site from './modules/site/components/Layout'
+    import Auth from './modules/admin/auth/views/Auth';
+
     import Store from './store';
 
     export default {
@@ -18,7 +20,8 @@
 
         components: {
             'admin': Admin,
-            'site': Site
+            'site': Site,
+            'auth': Auth
         }
     }
 </script>

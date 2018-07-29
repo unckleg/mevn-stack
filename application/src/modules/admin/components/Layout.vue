@@ -3,7 +3,9 @@
         <Header/>
         <Sidebar/>
         <div id="content" class="app-content" role="main">
-            <router-view/>
+            <div class="app-content-body">
+                <router-view/>
+            </div>
         </div>
         <Footer/>
     </div>
@@ -15,6 +17,7 @@
     @import './../../../../static/vendor/simple-line-icons/css/simple-line-icons.css';
     @import './../../../../static/vendor/jquery/bootstrap/dist/css/bootstrap.css';
     @import './../../../../static/css/app.min.css';
+    @import './../../../../static/vendor/jquery/datatable/datatable.bootstrap.css';
 </style>
 
 <script>
@@ -31,4 +34,6 @@
     }
 
     require('./../../../../static/js/app.min');
+    require('./../../../../static/vendor/jquery/datatable/datatable.min');
+    require('./../../../../static/vendor/jquery/datatable/datatable.bootstrap');
 </script>

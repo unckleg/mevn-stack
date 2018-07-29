@@ -1,9 +1,9 @@
 import Auth from './../views/Auth';
-import Guard from './../../../../service/middleware';
+import Guard from '@util/middleware';
 
 const Routes = [
     {
-        name: 'auth',
+        name: 'admin_auth',
         path: '/admin/auth',
         component: Auth,
         beforeEnter: Guard.guest,

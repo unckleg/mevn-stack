@@ -1,5 +1,5 @@
 import Dashboard from './../views/Dashboard';
-import Guard from './../../../../service/middleware';
+import Guard from '@util/middleware';
 
 const Routes = [
     {

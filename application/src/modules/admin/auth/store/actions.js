@@ -1,5 +1,5 @@
 import {_types} from './types';
-import axios from './../../../../service/axios';
+import axios from '@util/axios';
 
 export default {
     [_types.actions.AUTH_REQUEST]: ({commit, dispatch}, user) => {
@@ -10,8 +10,7 @@ export default {
                     let token = resp.data.token;
                     let user = resp.data.user;
                     localStorage.setItem('auth-token', token);
-                    console.log(user);
-                    commit(_types.actions.AUTH_SUCCESS, token, user);
+                    commit(_types.actions.AUTH_SUCCESS, {token, user});
 
                     axios.defaults.headers.common['Authorization'] = token;
                     resolve(resp);

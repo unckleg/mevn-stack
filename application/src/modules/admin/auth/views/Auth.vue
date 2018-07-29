@@ -68,9 +68,7 @@
             authenticate() {
                 const {username, password} = this.user;
                 this.$store.dispatch(types.actions.AUTH_REQUEST, {username, password}).then(() => {
-                    this.$router.push({
-                        name: 'admin_dashboard'
-                    });
+                    this.$router.push({ name: 'admin_dashboard' });
                 }).catch(err => {
                     this.message = err.message;
                 });

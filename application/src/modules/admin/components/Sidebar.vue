@@ -7,12 +7,12 @@
                         <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                             <span>CMS</span>
                         </li>
-                        <li>
+                        <router-link tag="li" :to="{ name: 'admin_dashboard'}" active-class="active" exact>
                             <a>
                                 <i class="glyphicon glyphicon-stats icon"></i>
                                 <span class="font-bold">Dashboard</span>
                             </a>
-                        </li>
+                        </router-link>
 
                         <li class="line dk" style="height: 2px;"></li>
                         <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -53,12 +53,13 @@
                         <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                             <span>Administration</span>
                         </li>
-                        <li>
+
+                        <router-link tag="li" :to="{ name: 'admin_users'}" active-class="active">
                             <a>
                                 <i class="glyphicon glyphicon-user"></i>
                                 <span >Users</span>
                             </a>
-                        </li>
+                        </router-link>
 
                         <li class="line dk"></li>
                         <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -76,3 +77,9 @@
         </div>
     </aside>
 </template>
+
+<script>
+    export default {
+        name: 'Sidebar'
+    }
+</script>

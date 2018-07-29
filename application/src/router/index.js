@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import axios from './../service/axios';
+import axios from '@util/axios';
 
 Vue.use(Router);
 

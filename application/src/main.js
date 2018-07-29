@@ -1,16 +1,12 @@
 import Vue from 'vue'
 import router from './router'
 import store from './store';
-import helpers from './service/util';
+import helpers from '@util/helpers';
 import App from './App';
+import mixin from '@util/mixin';
 
 Vue.config.productionTip = false;
-
-Vue.mixin({
-    methods: {
-        action: (module, action) => module + '/' + action
-    }
-});
+Vue.mixin(mixin);
 
 /* eslint-disable no-new */
 new Vue({
@@ -30,7 +26,7 @@ new Vue({
     },
 
     watch: {
-       '$route' (to, from) {
+        '$route' (to, from) {
             document.title = router.currentRoute.meta.title;
             helpers.resolveModuleLayout(store, router);
         }

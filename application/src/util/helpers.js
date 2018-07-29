@@ -13,10 +13,14 @@ helpers.isAuth = (routePath) => {
 };
 
 helpers.resolveModuleLayout = (Store, Router) => {
-    let module = 'site';
     let currentRoute = Router.currentRoute.path;
+    let module = 'site';
     if (helpers.isAdmin(currentRoute)) {
         module = 'admin';
+    }
+
+    if (helpers.isAuth(currentRoute)) {
+        module = 'auth';
     }
 
     Store.commit('Layout/SET_MODULE', module);
