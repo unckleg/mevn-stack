@@ -1,6 +1,6 @@
 <template>
     <header id="header" class="app-header navbar" role="menu">
-        <div class="navbar-header bg-dark">
+        <div class="navbar-header bg-black">
             <button class="pull-right visible-xs dk">
                 <i class="glyphicon glyphicon-cog"></i>
             </button>

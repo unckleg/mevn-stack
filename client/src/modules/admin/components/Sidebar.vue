@@ -1,5 +1,5 @@
 <template>
-    <aside id="aside" class="app-aside hidden-xs bg-dark">
+    <aside id="aside" class="app-aside app-aside-fixed hidden-xs bg-black">
         <div class="aside-wrap">
             <div class="navi-wrap">
                 <nav class="navi clearfix">
@@ -9,10 +9,48 @@
                         </li>
                         <router-link tag="li" :to="{ name: 'admin_dashboard'}" active-class="active" exact>
                             <a>
-                                <i class="glyphicon glyphicon-stats icon"></i>
+                                <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
                                 <span class="font-bold">Dashboard</span>
                             </a>
                         </router-link>
+
+                        <li class="">
+                            <a href="" class="auto">
+                              <span class="pull-right text-muted">
+                                  <i class="fa fa-fw fa-angle-right text"></i>
+                                  <i class="fa fa-fw fa-angle-down text-active"></i>
+                              </span>
+                              <i class="glyphicon glyphicon-th-large icon text-success"></i>
+                              <span class="font-bold">Apps</span>
+                            </a>
+                            <ul class="nav nav-sub dk">
+                              <li class="nav-sub-header">
+                                <a href="">
+                                  <span>Apps</span>
+                                </a>
+                              </li>
+                              <li ui-sref-active="active">
+                                <a ui-sref="app.todo" href="#/app/todo">
+                                  <span>Todo</span>
+                                </a>
+                              </li>
+                              <li ui-sref-active="active">
+                                <a ui-sref="apps.note" href="#/apps/note">
+                                  <span>Note</span>
+                                </a>
+                              </li>
+                              <li ui-sref-active="active">
+                                <a ui-sref="apps.contact" href="#/apps/contact">
+                                  <span>Contacts</span>
+                                </a>
+                              </li>
+                              <li ui-sref-active="active">
+                                <a ui-sref="app.weather" href="#/app/weather">
+                                  <span>Weather</span>
+                                </a>
+                              </li>
+                            </ul>
+                        </li>
 
                         <li class="line dk" style="height: 2px;"></li>
                         <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
