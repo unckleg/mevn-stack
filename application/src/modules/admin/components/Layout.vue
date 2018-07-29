@@ -29,4 +29,6 @@
             Sidebar
         }
     }
+
+    require('./../../../../static/js/app.min');
 </script>
