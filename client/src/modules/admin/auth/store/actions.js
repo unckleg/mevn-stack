@@ -7,7 +7,7 @@ export default {
             commit(_types.actions.AUTH_REQUEST);
             axios.post('admin/auth', user)
                 .then(resp => {
-                    let token = resp.data.token;
+                    let token = 'Bearer ' + resp.data.token;
                     let user = resp.data.user;
                     localStorage.setItem('auth-token', token);
                     commit(_types.actions.AUTH_SUCCESS, {token, user});
