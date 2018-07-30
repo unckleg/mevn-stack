@@ -41,7 +41,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     proxy: config.dev.proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
-      poll: config.dev.poll,
+      aggregateTimeout: 500, // delay before reloading
+      poll: 1000 // enable polling since fsevents are not supported in docker
     }
   },
   plugins: [

@@ -24,5 +24,10 @@ module.exports = {
             "window.jQuery": "jquery",
             jQuery:"jquery"
         })
-    ]
+    ],
+
+    watchOptions: {
+        aggregateTimeout: 300,
+        poll: true
+    }
 };

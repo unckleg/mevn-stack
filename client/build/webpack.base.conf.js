@@ -87,6 +87,12 @@ module.exports = {
             jQuery:"jquery"
         })
     ],
+
+    watchOptions: {
+        aggregateTimeout: 300,
+        poll: 1000
+    },
+
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).
