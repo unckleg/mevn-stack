@@ -1,13 +1,15 @@
 <template>
     <div class="app app-header-fixed">
-        <Header/>
-        <Sidebar/>
+        <Header></Header>
+        <Sidebar></Sidebar>
+
         <div id="content" class="app-content" role="main">
             <div class="app-content-body">
-                <router-view/>
+                <router-view></router-view>
             </div>
         </div>
-        <Footer/>
+
+        <Footer></Footer>
     </div>
 </template>
 

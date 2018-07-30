@@ -24,9 +24,9 @@
   },
   "_moduleAliases": {
     "@root": ".",
-    "@Admin": "./server/modules/admin",
-    "@Models": "./server/modules/admin/models",
-    "@AdminAPI": "./server/config/app.js",
-    "@config": "./server/config/index.js"
+    "@Admin": "./app/modules/admin",
+    "@Models": "./app/modules/admin/models",
+    "@AdminAPI": "./app/config/app.js",
+    "@config": "./app/config/index.js"
   }
 }

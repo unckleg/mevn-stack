@@ -19,7 +19,7 @@ app.use(cors());
 app.use(passport.initialize());
 app.set('secret', config.secret);
 
-consign({ cwd: 'server/modules' })
+consign({ cwd: 'app/modules' })
     .include('admin/models/index.js')
     .then('admin/controllers')
     .then('admin/routes')

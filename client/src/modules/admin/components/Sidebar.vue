@@ -1,5 +1,5 @@
 <template>
-    <aside id="aside" class="app-aside app-aside-fixed hidden-xs bg-black">
+    <aside id="aside" class="app-aside hidden-xs bg-black">
         <div class="aside-wrap">
             <div class="navi-wrap">
                 <nav class="navi clearfix">
@@ -9,7 +9,7 @@
                         </li>
                         <router-link tag="li" :to="{ name: 'admin_dashboard'}" active-class="active" exact>
                             <a>
-                                <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+                                <i class="glyphicon glyphicon-stats icon"></i>
                                 <span class="font-bold">Dashboard</span>
                             </a>
                         </router-link>
@@ -20,7 +20,7 @@
                                   <i class="fa fa-fw fa-angle-right text"></i>
                                   <i class="fa fa-fw fa-angle-down text-active"></i>
                               </span>
-                              <i class="glyphicon glyphicon-th-large icon text-success"></i>
+                              <i class="glyphicon glyphicon-th-large icon"></i>
                               <span class="font-bold">Apps</span>
                             </a>
                             <ul class="nav nav-sub dk">
