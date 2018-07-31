@@ -6,7 +6,7 @@ RUN ["chmod", "+x", "entrypoint/entrypoint.sh"]
 
 WORKDIR /data/
 
-EXPOSE 3002
+EXPOSE $CLIENT_EXT_PORT
 
 ENTRYPOINT ["/entrypoint/entrypoint.sh"]
 

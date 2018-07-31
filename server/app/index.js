@@ -2,7 +2,7 @@ require('module-alias/register');
 
 const http        = require('http');
 const AdminListen = '0.0.0.0';
-const AdminPort   = process.env.PORT || 3001;
+const AdminPort   = process.env.SERVER_EXT_PORT || 3001;
 const AdminAPI    = require('@AdminAPI');
 const AdminServer = http.Server(AdminAPI);
 

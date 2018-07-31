@@ -5,6 +5,6 @@ cd $(dirname "$0")
 set -e errexit
 set -o pipefail
 set -a
-. ".env"
+. ".docker-env"
 set +a
 docker-compose up -d

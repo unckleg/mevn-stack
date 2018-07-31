@@ -4,5 +4,5 @@ module.exports = {
         session: false
     },
 
-    database: 'mongodb://mongo:27017/mevn-stack'
+    database: 'mongodb://'+process.env.MONGO_CONTAINER_NAME+':'+process.env.MONGO_EXT_PORT+'/mevn-stack'
 };

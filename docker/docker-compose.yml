@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+    mongo:
+        container_name: "$MONGO_CONTAINER_NAME"
+        image: mongo
+        ports:
+            - "${MONGO_EXT_PORT}:${MONGO_INT_PORT}"
+        restart : always
+        volumes:
+            - ./../db:/data/db
+        command: "--smallfiles --bind_ip mongo --port $MONGO_EXT_PORT"
+        env_file: .env
+        links:
+          - client
+
+    server:
+        container_name: "$SERVER_CONTAINER_NAME"
+        build: ./../server
+        ports:
+            - "${SERVER_EXT_PORT}:${SERVER_INT_PORT}"
+        restart : always
+        volumes:
+            - ./../server:/data
+        command: nodemon --watch app --exec node app
+        depends_on:
+            - mongo
+        env_file: .env
+
+    client:
+        container_name: "$CLIENT_CONTAINER_NAME"
+        build: ./../client
+        ports:
+            - "${CLIENT_EXT_PORT}:${CLIENT_INT_PORT}"
+        restart : always
+        volumes:
+            - ./../client:/data
+        env_file: .env
