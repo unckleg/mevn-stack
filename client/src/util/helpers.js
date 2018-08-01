@@ -1,9 +1,5 @@
 const helpers = {};
 
-/**
- * @param routePath
- * @returns {boolean}
- */
 helpers.isAdmin = (routePath) => {
     return helpers.strContains('admin', routePath);
 };

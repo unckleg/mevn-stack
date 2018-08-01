@@ -1,3 +1,4 @@
+import { EventBus } from './event-bus';
 const methods = {};
 
 methods.datatable = (selector, options = {}, timeout = 500) => {
@@ -7,5 +8,13 @@ methods.datatable = (selector, options = {}, timeout = 500) => {
 };
 
 export default {
+    data: function() {
+        return {
+            get EventBus() {
+                return EventBus;
+            }
+        }
+    },
+
     methods
 }

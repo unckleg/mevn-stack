@@ -42,26 +42,6 @@ const Schema = mongoose.Schema({
         type: String
     },
 
-    socials: {
-        type: Object,
-        default: {
-            facebook: 'https://facebook.com',
-            twitter: 'https://twitter.com',
-            instagram: 'https://instagram.com'
-        },
-        get: function(data) {
-            try {
-                return JSON.parse(data);
-            } catch(err) {
-                return data;
-            }
-        },
-
-        set: function(data) {
-            return JSON.stringify(data);
-        }
-    },
-
     is_active: {
         type: Boolean,
         default: false

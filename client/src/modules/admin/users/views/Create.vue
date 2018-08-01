@@ -14,10 +14,32 @@
 </template>
 <script>
     import UserForm from './forms/UserForm';
+    import store from '@/store'
+    import { types, ns } from './../store/types';
+    import { mapGetters } from 'vuex';
+
     export default {
         name: 'Create',
         components: {
             UserForm
+        },
+
+        mounted () {
+            this.EventBus.$on(types.actions.CREATE_USER, async () => {
+                await this.$store.dispatch(types.actions.CREATE_USER);
+                this.$router.push({ name: 'admin_users'});
+            });
+
+        },
+
+        async beforeRouteUpdate (to, from, next) {
+            await store.dispatch(types.actions.RESET_STATE);
+            next();
+        },
+
+        async beforeRouteLeave (to, from, next) {
+            await store.dispatch(types.actions.RESET_STATE);
+            next();
         }
     }
 </script>

@@ -8,6 +8,7 @@ RUN ["chmod", "+x", "entrypoint/entrypoint.sh"]
 # Copy or mount node app here
 WORKDIR /data/
 
+ARG SERVER_EXT_PORT
 EXPOSE $SERVER_EXT_PORT
 
 ENTRYPOINT ["/entrypoint/entrypoint.sh"]

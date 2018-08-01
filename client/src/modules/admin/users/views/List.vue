@@ -50,8 +50,8 @@
                                     <button class="btn m-b-xs btn-info">
                                     <i class="fa fa-pencil"></i>
                                     </button>
-                                    <button class="btn m-b-xs btn-danger">
-                                    <i class="fa fa-trash-o"></i>
+                                    <button class="btn m-b-xs btn-danger" @click="remove(user._id)">
+                                        <i class="fa fa-trash-o"></i>
                                     </button>
                                 </td>
                             </tr>
@@ -66,7 +66,7 @@
 <script>
     import List from './List';
     import {types} from './../store/types';
-    import {mapGetters} from 'vuex';
+    import {mapGetters, mapActions} from 'vuex';
     
     export default {
         name: 'Users',
@@ -77,14 +77,21 @@
     
         computed: {
             ...mapGetters({
-                users: types.getters.USERS
+                users: types.getters.GET_USERS
             })
         },
-    
+
         created () {
             this.$store.dispatch(types.actions.FETCH_USERS).then(() => {
                 this.datatable('#table', {}, 0);
             });
+        },
+
+        methods: {
+            async remove(id) {
+                await this.$store.dispatch(types.actions.DELETE_USER, id);
+                this.$store.dispatch(types.actions.FETCH_USERS);
+            }
         }
     }
 </script>

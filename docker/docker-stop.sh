@@ -5,7 +5,7 @@ cd $(dirname "$0")
 set -e errexit
 set -o pipefail
 set -a
-. ".docker-env"
+. ".env"
 set +a
 
 docker-compose stop

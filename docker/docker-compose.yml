@@ -16,7 +16,10 @@ services:
 
     server:
         container_name: "$SERVER_CONTAINER_NAME"
-        build: ./../server
+        build:
+            context: ./../server
+            args:
+                - "SERVER_EXT_PORT=${SERVER_EXT_PORT}"
         ports:
             - "${SERVER_EXT_PORT}:${SERVER_INT_PORT}"
         restart : always
@@ -29,7 +32,10 @@ services:
 
     client:
         container_name: "$CLIENT_CONTAINER_NAME"
-        build: ./../client
+        build:
+            context: ./../client
+            args:
+                - "CLIENT_EXT_PORT=${CLIENT_EXT_PORT}"
         ports:
             - "${CLIENT_EXT_PORT}:${CLIENT_INT_PORT}"
         restart : always
