@@ -1,6 +1,6 @@
-import removeNamespace from './../../../../store/helper';
+import helpers from '@util/helpers';
 
-let namespace = 'Auth/';
+let namespace = 'AdminAuth/';
 export const types = {
     actions: {
         AUTH_REQUEST: namespace + 'AUTH_REQUEST',
@@ -16,4 +16,4 @@ export const types = {
     }
 };
 
-export const _types = removeNamespace(namespace, types);
+export const _types = helpers.removeNamespace(namespace, types);

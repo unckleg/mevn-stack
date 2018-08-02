@@ -5,7 +5,9 @@
 
         <div id="content" class="app-content" role="main">
             <div class="app-content-body">
-                <router-view></router-view>
+                <transition name="fade">
+                    <router-view></router-view>
+                </transition>
             </div>
         </div>
 
@@ -20,6 +22,7 @@
     @import './../../../../static/vendor/jquery/bootstrap/dist/css/bootstrap.css';
     @import './../../../../static/css/app.min.css';
     @import './../../../../static/vendor/jquery/datatable/datatable.bootstrap.css';
+    @import './../../../../static/css/custom.css';
 </style>
 
 <script>

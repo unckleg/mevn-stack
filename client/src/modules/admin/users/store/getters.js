@@ -6,5 +6,7 @@ export default {
 
     [_types.getters.GET_USER]: state => state.user,
 
+    [_types.getters.GET_FORM_ACTION]: state => state.form_action,
+
     getField
 };

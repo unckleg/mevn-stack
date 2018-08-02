@@ -47,7 +47,7 @@
                                     </template>
                                 </td>
                                 <td>
-                                    <button class="btn m-b-xs btn-info">
+                                    <button class="btn m-b-xs btn-info" @click="$router.push({ name: 'admin_users_edit', params: { id: user._id } })">
                                     <i class="fa fa-pencil"></i>
                                     </button>
                                     <button class="btn m-b-xs btn-danger" @click="remove(user._id)">
@@ -70,9 +70,8 @@
     
     export default {
         name: 'Users',
-    
         components: {
-            list: List
+            List
         },
     
         computed: {

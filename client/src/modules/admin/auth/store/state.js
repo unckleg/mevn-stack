@@ -1,5 +1,5 @@
 export default {
     token: localStorage.getItem('auth-token') || '',
     status: false,
-    user: {}
+    user: localStorage.getItem('auth-user') || {}
 };

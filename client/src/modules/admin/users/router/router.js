@@ -1,5 +1,6 @@
-import UsersList from './../views/List';
-import UserCreate from './../views/Create';
+import UsersList from './../views/List.vue';
+import UserCreate from './../views/Create.vue';
+import UsersEdit from './../views/Edit.vue';
 import Guard from '@util/middleware';
 
 const Routes = [
@@ -19,6 +20,15 @@ const Routes = [
         beforeEnter: Guard.auth,
         meta: {
             title: 'Admin User Create'
+        }
+    },
+    {
+        name: 'admin_users_edit',
+        path: '/admin/users/edit/:id',
+        component: UsersEdit,
+        beforeEnter: Guard.auth,
+        meta: {
+            title: 'Admin Users Edit'
         }
     }
 ];

@@ -12,6 +12,7 @@
         </div>
     </div>
 </template>
+
 <script>
     import UserForm from './forms/UserForm';
     import store from '@/store'
@@ -19,7 +20,7 @@
     import { mapGetters } from 'vuex';
 
     export default {
-        name: 'Create',
+        name: 'user-create',
         components: {
             UserForm
         },
@@ -27,9 +28,13 @@
         mounted () {
             this.EventBus.$on(types.actions.CREATE_USER, async () => {
                 await this.$store.dispatch(types.actions.CREATE_USER);
-                this.$router.push({ name: 'admin_users'});
+                this.$router.push({ name: 'admin_users' });
             });
+        },
 
+        async beforeRouteEnter (to, from, next) {
+            store.dispatch(types.actions.FORM_ACTION, types.actions.CREATE_USER);
+            return next();
         },
 
         async beforeRouteUpdate (to, from, next) {

@@ -1,14 +1,14 @@
 FROM node:carbon
 
-COPY ./docker/entrypoint.sh /entrypoint/
+COPY ./docker-entrypoint.sh /entrypoint/
 
-RUN ["chmod", "+x", "entrypoint/entrypoint.sh"]
+RUN ["chmod", "+x", "entrypoint/docker-entrypoint.sh"]
 
 WORKDIR /data/
 
 ARG CLIENT_EXT_PORT
 EXPOSE $CLIENT_EXT_PORT
 
-ENTRYPOINT ["/entrypoint/entrypoint.sh"]
+ENTRYPOINT ["./docker-entrypoint.sh"]
 
 CMD ["npm", "start"]

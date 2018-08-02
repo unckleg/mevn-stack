@@ -26,4 +26,15 @@ helpers.strContains = (string, subject) => {
     return RegExp('\\b' + string + '\\b').test(subject)
 };
 
+helpers.removeNamespace = (namespace, types) => {
+    let _ = require('lodash');
+    return _.reduce(types, (typeObj, typeValue, typeName) => {
+        typeObj[typeName] = _.reduce(typeValue, (obj, v, k) => {
+            obj[k] = v.replace(namespace, '');
+            return obj;
+        }, {});
+        return typeObj;
+    }, {});
+};
+
 export default helpers;

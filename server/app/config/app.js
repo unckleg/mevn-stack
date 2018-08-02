@@ -22,6 +22,7 @@ app.set('secret', config.secret);
 consign({ cwd: 'app/modules' })
     .include('admin/models/index.js')
     .then('admin/controllers')
+    .then('admin/middlewares')
     .then('admin/routes')
     .into(app)
 ;

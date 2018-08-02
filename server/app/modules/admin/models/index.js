@@ -1,5 +1,5 @@
 const mongoose  = require('mongoose');
-const UserModel = require('@Admin/models/user/user');
+const UserModel = require('@Admin/models/User/User');
 
 const models = {
     User: mongoose.model('User')

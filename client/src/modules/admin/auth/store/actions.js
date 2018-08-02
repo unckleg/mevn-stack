@@ -1,33 +1,37 @@
 import {_types} from './types';
 import axios from '@util/axios';
+import Service from '@core/service';
 
+let service = new Service('admin');
 export default {
-    [_types.actions.AUTH_REQUEST]: ({commit, dispatch}, user) => {
+    [_types.actions.AUTH_REQUEST]: ({ commit }, user) => {
         return new Promise((resolve, reject) => {
             commit(_types.actions.AUTH_REQUEST);
-            axios.post('admin/auth', user)
-                .then(resp => {
-                    let token = 'Bearer ' + resp.data.token;
-                    let user = resp.data.user;
+            service.rest('auth', user)
+                .then((data) => {
+                    let token = 'Bearer ' + data.token;
+                    let user = data.user;
                     localStorage.setItem('auth-token', token);
+                    localStorage.setItem('auth-user', user);
                     commit(_types.actions.AUTH_SUCCESS, {token, user});
 
                     axios.defaults.headers.common['Authorization'] = token;
-                    resolve(resp);
+                    resolve(data);
                 })
-                .catch(({response: {data}}) => {
+                .catch((err) => {
                     commit(_types.actions.AUTH_ERROR);
                     localStorage.removeItem('auth-token');
-                    reject(data)
+                    reject(err)
                 })
             ;
         });
     },
 
-    [_types.actions.AUTH_LOGOUT]: ({commit, dispatch}) => {
-        return new Promise((resolve, reject) => {
+    [_types.actions.AUTH_LOGOUT]: ({ commit }) => {
+        return new Promise((resolve) => {
             commit(_types.actions.AUTH_LOGOUT);
             localStorage.removeItem('auth-token');
+            localStorage.removeItem('auth-user');
             delete axios.defaults.headers.common['Authorization'];
             resolve()
         });
