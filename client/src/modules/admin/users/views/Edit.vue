@@ -32,8 +32,12 @@
         },
 
         mounted () {
-            this.EventBus.$on(types.actions.UPDATE_USER, async () => {
+            this.EventBus.$once(types.actions.UPDATE_USER, async (formData = null) => {
                 await this.$store.dispatch(types.actions.UPDATE_USER);
+                if (formData) {
+                    await this.$store.dispatch(types.actions.UPLOAD_AVATAR, formData);
+                }
+
                 this.$router.push({ name: 'admin_users' });
             });
         },

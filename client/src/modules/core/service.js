@@ -1,4 +1,6 @@
 import axios from '@util/axios';
+import store from '@/store';
+import { types } from '@core/store/types';
 
 export default class Service {
     /**
@@ -33,11 +35,12 @@ export default class Service {
                 } else {
                     reject(response);
                 }
-            }).catch(resp => {
+            }).catch((resp) => {
                 if (resp.data) {
-                    console.error('REST request error!', resp.data.error);
+                    store.dispatch(types.actions.CATCH_ERRORS, resp.data);
                     reject(resp.data);
                 } else {
+                    store.dispatch(types.actions.CATCH_ERRORS, resp);
                     reject(resp);
                 }
             });

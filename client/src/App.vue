@@ -9,12 +9,13 @@
     import Site from './modules/site/components/Layout'
     import Auth from './modules/admin/auth/views/Auth';
 
-    import Store from './store';
+    import store from './store';
+    import {types} from './modules/core/store/types';
 
     export default {
         computed: {
             module () {
-                return Store.getters['Layout/module']
+                return store.getters[types.getters.GET_MODULE]
             }
         },
 

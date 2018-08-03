@@ -10,3 +10,14 @@
 .fade-enter, .fade-leave-active {
     opacity: 0
 }
+
+.img-form {
+    text-align: center;
+    border: 1px solid #0000001c;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.img-form > img {
+    max-width: 50%;
+}

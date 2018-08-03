@@ -47,6 +47,20 @@ export default {
         });
     },
 
+    [_types.actions.UPLOAD_AVATAR]: ({ dispatch }, formData) => {
+        return new Promise((resolve, reject) => {
+            service.rest('uploadAvatar', formData)
+                .then((data) => {
+                    dispatch(_types.actions.RESET_STATE);
+                    resolve(data);
+                })
+                .catch(resp => {
+                    reject(resp.data)
+                })
+            ;
+        });
+    },
+
     [_types.actions.CREATE_USER]: ({ commit, state }) => {
         return new Promise((resolve, reject) => {
             service.rest('create', state.user)

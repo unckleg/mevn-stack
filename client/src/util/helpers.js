@@ -1,5 +1,4 @@
 const helpers = {};
-
 helpers.isAdmin = (routePath) => {
     return helpers.strContains('admin', routePath);
 };
@@ -8,9 +7,10 @@ helpers.isAuth = (routePath) => {
     return helpers.strContains('admin/auth', routePath);
 };
 
-helpers.resolveModuleLayout = (Store, Router) => {
+helpers.resolveModuleLayout = (store, Router) => {
     let currentRoute = Router.currentRoute.path;
-    let module = 'site';
+    let types = require('./../modules/core/store/types').types;
+    let module = store.getters[types.getters.GET_MODULE];
     if (helpers.isAdmin(currentRoute)) {
         module = 'admin';
     }
@@ -19,7 +19,7 @@ helpers.resolveModuleLayout = (Store, Router) => {
         module = 'auth';
     }
 
-    Store.commit('Layout/SET_MODULE', module);
+    store.dispatch(types.actions.REGISTER_MODULE, module);
 };
 
 helpers.strContains = (string, subject) => {

@@ -1,9 +1,9 @@
 const actions = {};
 
-actions.list = (User) => (req, res) => {
+actions.list = (User) => (req, res, next) => {
     User.find({}, (error, users) => {
         if (error) {
-            throw error; return;
+            throw error;
         }
 
         res.json({
@@ -26,16 +26,12 @@ actions.create = (User) => (req, res) => {
     });
 
     user.save(error => {
-        if (error) {
-            return res.status(400).json({
-                success: false,
-                message: 'There was an error.' + error
-            });
-        }
+        if (error) throw (error);
 
         res.json({
             success: true,
-            message: 'User created successfully.'
+            message: 'User created successfully.',
+            user: user
         });
     });
 };
@@ -81,8 +77,6 @@ actions.update = (User) => (req, res) => {
             }
 
             user.save(function(err, data) {
-                console.log(err);
-
                 if (err) {
                     res.status(400).json({
                         success: false,
@@ -97,7 +91,7 @@ actions.update = (User) => (req, res) => {
                     message: 'Successfully updated user.',
                     user: data
                 });
-            })
+            });
         });
     }
 };
@@ -162,6 +156,29 @@ actions.validate = (User) => async (req, res) => {
 
             return res.status(200).json({ success: true });
         }
+    }
+};
+
+actions.uploadAvatar = (User) => (req, res) => {
+    if (!req.file) {
+        return res.status(400).json('There was an error while file upload.');
+    }
+
+    if (req.body._id) {
+        User.findOne({_id: req.body._id}, (error, user) => {
+            if (error) throw (error);
+
+            user.avatar = req.uploadedFileName;
+            user.save(function(err, data) {
+                if (error) throw (error);
+
+                return res.status(200).json({
+                    success: true,
+                    message: 'Successfully updated avatar.',
+                    user: data
+                });
+            });
+        })
     }
 };
 

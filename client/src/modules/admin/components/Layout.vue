@@ -1,17 +1,22 @@
 <template>
     <div class="app app-header-fixed">
-        <Header></Header>
-        <Sidebar></Sidebar>
+        <template v-if="errorBag.length">
+            <error-layout></error-layout>
+        </template>
+        <template v-else>
+            <Header></Header>
+            <Sidebar></Sidebar>
 
-        <div id="content" class="app-content" role="main">
-            <div class="app-content-body">
-                <transition name="fade">
-                    <router-view></router-view>
-                </transition>
+            <div id="content" class="app-content" role="main">
+                <div class="app-content-body">
+                    <transition name="fade">
+                        <router-view></router-view>
+                    </transition>
+                </div>
             </div>
-        </div>
 
-        <Footer></Footer>
+            <Footer></Footer>
+        </template>
     </div>
 </template>
 
@@ -29,12 +34,23 @@
     import Header from './Header';
     import Footer from './Footer';
     import Sidebar from './Sidebar';
+    import ErrorLayout from './ErrorLayout.vue';
+
+    import { mapGetters } from 'vuex';
+    import { types } from '@core/store/types';
 
     export default {
         components: {
             Header,
             Footer,
-            Sidebar
+            Sidebar,
+            ErrorLayout
+        },
+
+        computed: {
+            ...mapGetters({
+                errorBag: types.getters.GET_ERRORS
+            })
         }
     }
 

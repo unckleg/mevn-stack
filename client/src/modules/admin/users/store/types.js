@@ -9,7 +9,8 @@ export const types = {
         UPDATE_USER: namespace + 'UPDATE_USER',
         DELETE_USER: namespace + 'DELETE_USER',
         RESET_STATE: namespace + 'RESET_STATE',
-        FORM_ACTION: namespace + 'FORM_ACTION'
+        FORM_ACTION: namespace + 'FORM_ACTION',
+        UPLOAD_AVATAR: namespace + 'UPLOAD_AVATAR'
     },
 
     getters: {

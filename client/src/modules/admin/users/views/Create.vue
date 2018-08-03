@@ -26,8 +26,14 @@
         },
 
         mounted () {
-            this.EventBus.$on(types.actions.CREATE_USER, async () => {
-                await this.$store.dispatch(types.actions.CREATE_USER);
+            this.EventBus.$once(types.actions.CREATE_USER, async (formData = null) => {
+                let response = await this.$store.dispatch(types.actions.CREATE_USER);
+                if (formData) {
+                    formData.delete('_id');
+                    formData.append('_id', response.user._id);
+                    await this.$store.dispatch(types.actions.UPLOAD_AVATAR, formData);
+                }
+
                 this.$router.push({ name: 'admin_users' });
             });
         },

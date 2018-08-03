@@ -27,4 +27,17 @@ consign({ cwd: 'app/modules' })
     .into(app)
 ;
 
+// TODO: move to util folder as errorHandler.js!
+app.use((err, req, res, next) => {
+    if (!err) {
+        return next();
+    }
+
+    res.status(err.status || 500);
+    res.json({
+        success: false,
+        message: err.message
+    });
+});
+
 module.exports = app;

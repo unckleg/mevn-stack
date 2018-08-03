@@ -14,7 +14,6 @@
                                    v-model="username"
                                    name="username"
                                    v-validate="'required|username'"
-                                   readonly="readonly"
                             >
                             <input-error :errorBag="errors" :fieldName="'username'"></input-error>
                         </div>
@@ -82,7 +81,10 @@
                         </div>
                         <div class="form-group">
                             <label>Avatar</label>
-                            <input type="file" class="form-control">
+                            <div class="img-form" v-if="filePreview.length || avatar.length">
+                                <img :src="filePreview ? filePreview : avatar">
+                            </div>
+                            <input type="file" class="form-control" @change="onAvatarPick">
                         </div>
                         <div class="line line-dashed b-b line-lg pull-in"></div>
                         <div class="form-group">
@@ -106,7 +108,7 @@
 </template>
 
 <script>
-    import InputError from '@modules/admin/components/Error/Input';
+    import InputError from '@modules/admin/components/ErrorInput';
     import { types, ns } from './../../store/types';
     import { mapFields } from 'vuex-map-fields';
     import { rules } from './UserFormValidator';
@@ -124,7 +126,10 @@
                 shouldValidate: {
                     password: true,
                     confirm_password: true
-                }
+                },
+
+                filePreview: '',
+                file: null
             }
         },
 
@@ -155,10 +160,24 @@
             validateAndProcess() {
                 let formAction = this.$store.getters[types.getters.GET_FORM_ACTION];
                 this.$validator.validateAll().then((result) => {
+
+                    let formData = null;
+                    if (this.file) {
+                        formData = new FormData();
+                        formData.append('avatar', this.file, this.file.name);
+                        formData.append('_id', this.$store.getters[types.getters.GET_USER]._id);
+                    }
+
                     if (result) {
-                        this.EventBus.$emit(formAction);
+                        this.EventBus.$emit(formAction, formData);
                     }
                 });
+            },
+
+            onAvatarPick(e) {
+                const file = e.target.files[0];
+                this.file = file;
+                this.filePreview = URL.createObjectURL(file);
             }
         }
     }

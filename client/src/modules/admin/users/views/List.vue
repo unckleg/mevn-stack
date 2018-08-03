@@ -65,8 +65,8 @@
 
 <script>
     import List from './List';
-    import {types} from './../store/types';
-    import {mapGetters, mapActions} from 'vuex';
+    import { types } from './../store/types';
+    import { mapGetters, mapActions } from 'vuex';
     
     export default {
         name: 'Users',
