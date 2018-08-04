@@ -118,6 +118,6 @@
 
 <script>
     export default {
-        name: 'Sidebar'
+        name: 'admin-sidebar'
     }
 </script>

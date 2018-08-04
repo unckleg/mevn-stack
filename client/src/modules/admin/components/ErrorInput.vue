@@ -6,7 +6,10 @@
 
 <script>
     export default {
-        name: 'input-error',
-        props: ['fieldName', 'errorBag']
+        name: 'admin-input-error',
+        props: [
+            'fieldName',
+            'errorBag'
+        ]
     }
 </script>

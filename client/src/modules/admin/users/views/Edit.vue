@@ -8,21 +8,22 @@
             </button>
         </div>
         <div class="wrapper-md">
-            <user-form></user-form>
+            <admin-user-form></admin-user-form>
         </div>
     </div>
 </template>
 
 <script>
-    import UserForm from './forms/UserForm';
+    import AdminUserForm from './forms/UserForm';
     import store from '@/store'
+
     import { types, ns } from './../store/types';
     import { mapGetters } from 'vuex';
 
     export default {
-        name: 'user-edit',
+        name: 'admin-user-edit',
         components: {
-            UserForm
+            AdminUserForm
         },
 
         computed: {
@@ -48,7 +49,6 @@
         },
 
         async beforeRouteEnter (to, from, next) {
-            await store.dispatch(types.actions.RESET_STATE);
             if (to.params.id !== undefined) {
                 store.dispatch(types.actions.FORM_ACTION, types.actions.UPDATE_USER);
                 await store.dispatch(types.actions.FETCH_USER,

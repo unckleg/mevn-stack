@@ -15,7 +15,7 @@
                                    name="username"
                                    v-validate="'required|username'"
                             >
-                            <input-error :errorBag="errors" :fieldName="'username'"></input-error>
+                            <admin-input-error :errorBag="errors" :fieldName="'username'"></admin-input-error>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
@@ -27,7 +27,7 @@
                                    name="password"
                                    v-validate="shouldValidate.password ? 'required|confirmed:confirm_password' : ''"
                             >
-                            <input-error :errorBag="errors" :fieldName="'password'"></input-error>
+                            <admin-input-error :errorBag="errors" :fieldName="'password'"></admin-input-error>
                             <br/>
                             <input type="password"
                                    class="form-control"
@@ -37,7 +37,7 @@
                                    v-validate="shouldValidate.confirm_password ? 'required' : ''"
                                    ref="confirm_password"
                             >
-                            <input-error :errorBag="errors" :fieldName="'confirm_password'"></input-error>
+                            <admin-input-error :errorBag="errors" :fieldName="'confirm_password'"></admin-input-error>
                         </div>
                         <div class="form-group">
                             <label>Email address</label>
@@ -49,7 +49,7 @@
                                    name="email"
                                    v-validate="'required|email|emailExist'"
                             >
-                            <input-error :errorBag="errors" :fieldName="'email'"></input-error>
+                            <admin-input-error :errorBag="errors" :fieldName="'email'"></admin-input-error>
                         </div>
                         <div class="form-group">
                             <label>First Name</label>
@@ -60,7 +60,7 @@
                                    v-model="first_name"
                                    v-validate="'required'"
                             >
-                            <input-error :errorBag="errors" :fieldName="'first_name'"></input-error>
+                            <admin-input-error :errorBag="errors" :fieldName="'first_name'"></admin-input-error>
                         </div>
                         <div class="form-group">
                             <label>Last Name</label>
@@ -108,29 +108,17 @@
 </template>
 
 <script>
-    import InputError from '@modules/admin/components/ErrorInput';
+    import AdminInputError from '@modules/admin/components/ErrorInput';
+
     import { types, ns } from './../../store/types';
     import { mapFields } from 'vuex-map-fields';
     import { rules } from './UserFormValidator';
 
     export default {
+        name: 'admin-user-form',
+
         components: {
-            InputError
-        },
-
-        name: 'UserForm',
-
-        data() {
-            return {
-                types: types,
-                shouldValidate: {
-                    password: true,
-                    confirm_password: true
-                },
-
-                filePreview: '',
-                file: null
-            }
+            AdminInputError
         },
 
         computed: {
@@ -147,8 +135,23 @@
             ])
         },
 
+        data() {
+            return {
+                types: types,
+                shouldValidate: {
+                    password: true,
+                    confirm_password: true
+                },
+
+                filePreview: '',
+                file: null,
+
+                formAction: this.$store.getters[types.getters.GET_FORM_ACTION]
+            }
+        },
+
         created() {
-            if (this.$store.getters[types.getters.GET_FORM_ACTION] === types.actions.UPDATE_USER) {
+            if (this.formAction === types.actions.UPDATE_USER) {
                 this.shouldValidate.password = false;
                 this.shouldValidate.confirm_password = false;
             }
@@ -158,7 +161,6 @@
 
         methods: {
             validateAndProcess() {
-                let formAction = this.$store.getters[types.getters.GET_FORM_ACTION];
                 this.$validator.validateAll().then((result) => {
 
                     let formData = null;
@@ -169,7 +171,7 @@
                     }
 
                     if (result) {
-                        this.EventBus.$emit(formAction, formData);
+                        this.EventBus.$emit(this.formAction, formData);
                     }
                 });
             },

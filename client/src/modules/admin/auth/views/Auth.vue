@@ -50,9 +50,11 @@
 </template>
 
 <script>
-    import {types} from './../store/types';
+    import { types } from './../store/types';
 
     export default {
+        name: 'admin-auth',
+
         data () {
             return {
                 user: {

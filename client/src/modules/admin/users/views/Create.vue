@@ -8,21 +8,22 @@
             </button>
         </div>
         <div class="wrapper-md">
-            <user-form></user-form>
+            <admin-user-form></admin-user-form>
         </div>
     </div>
 </template>
 
 <script>
-    import UserForm from './forms/UserForm';
+    import AdminUserForm from './forms/UserForm';
     import store from '@/store'
+
     import { types, ns } from './../store/types';
     import { mapGetters } from 'vuex';
 
     export default {
-        name: 'user-create',
+        name: 'admin-user-create',
         components: {
-            UserForm
+            AdminUserForm
         },
 
         mounted () {

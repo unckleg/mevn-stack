@@ -23,7 +23,7 @@
     import { types } from '@core/store/types';
 
     export default {
-        name: 'error-layout',
+        name: 'admin-error-layout',
 
         methods: {
             ...mapActions({

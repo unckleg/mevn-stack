@@ -50,7 +50,8 @@
                                     <button class="btn m-b-xs btn-info" @click="$router.push({ name: 'admin_users_edit', params: { id: user._id } })">
                                     <i class="fa fa-pencil"></i>
                                     </button>
-                                    <button class="btn m-b-xs btn-danger" @click="remove(user._id)">
+                                    <button class="btn m-b-xs btn-danger"
+                                            @click="modalData = {id: user._id}; showModal = true;">
                                         <i class="fa fa-trash-o"></i>
                                     </button>
                                 </td>
@@ -60,29 +61,51 @@
                 </div>
             </div>
         </div>
+
+        <admin-modal :show-modal="showModal" :modal-data="modalData">
+            <template slot="modal-header">Warning!</template>
+            <template slot="modal-question">Are you sure you want to remove user ?</template>
+            <template slot="modal-btn-close">
+                <button class="btn btn-default" @click="showModal = false; modalData = {}">Close</button>
+            </template>
+        </admin-modal>
     </div>
 </template>
 
 <script>
-    import List from './List';
+    import AdminModal from './../../components/Modal.vue';
+
     import { types } from './../store/types';
     import { mapGetters, mapActions } from 'vuex';
     
     export default {
-        name: 'Users',
+        name: 'admin-users',
         components: {
-            List
+            AdminModal
         },
-    
+
         computed: {
             ...mapGetters({
                 users: types.getters.GET_USERS
             })
         },
 
+        data() {
+            return {
+                showModal: false,
+                modalData: {}
+            }
+        },
+
         created () {
             this.$store.dispatch(types.actions.FETCH_USERS).then(() => {
                 this.datatable('#table', {}, 0);
+            });
+
+            this.EventBus.$once('modal-confirmed', () => {
+                this.remove(this.modalData['id']);
+                this.showModal = false;
+                this.modalData = {};
             });
         },
 
@@ -94,3 +117,13 @@
         }
     }
 </script>
+
+<style>
+    .fadeIn-transition {
+        transition: opacity 0.3s linear;
+    }
+
+    .fadeIn-enter, .fadeIn-leave {
+        opacity: 0;
+    }
+</style>
