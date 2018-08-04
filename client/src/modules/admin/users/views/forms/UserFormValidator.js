@@ -24,7 +24,6 @@ export const rules = {
 
                 resolve({
                     valid: resp.success,
-
                     data: {
                         message: `Username: [${value}] has already been taken.`
                     }
@@ -55,7 +54,6 @@ export const rules = {
 
                 resolve({
                     valid: resp.success,
-
                     data: {
                         message: `Email: [${value}] has already been taken.`
                     }

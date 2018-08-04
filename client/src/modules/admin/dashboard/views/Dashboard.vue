@@ -632,3 +632,9 @@
         <!-- / right col -->
     </div>
 </template>
+
+<script>
+    export default {
+        name: 'admin-dashboard'
+    }
+</script>

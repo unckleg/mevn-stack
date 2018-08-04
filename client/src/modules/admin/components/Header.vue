@@ -64,7 +64,7 @@
     import {types} from './../auth/store/types';
 
     export default {
-        name: 'Header',
+        name: 'admin-header',
 
         methods: {
             logout() {

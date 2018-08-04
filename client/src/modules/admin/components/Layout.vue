@@ -1,11 +1,11 @@
 <template>
     <div class="app app-header-fixed">
         <template v-if="errorBag.length">
-            <error-layout></error-layout>
+            <admin-error-layout></admin-error-layout>
         </template>
         <template v-else>
-            <Header></Header>
-            <Sidebar></Sidebar>
+            <admin-header></admin-header>
+            <admin-sidebar></admin-sidebar>
 
             <div id="content" class="app-content" role="main">
                 <div class="app-content-body">
@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <Footer></Footer>
+            <admin-footer></admin-footer>
         </template>
     </div>
 </template>
@@ -31,20 +31,20 @@
 </style>
 
 <script>
-    import Header from './Header';
-    import Footer from './Footer';
-    import Sidebar from './Sidebar';
-    import ErrorLayout from './ErrorLayout.vue';
+    import AdminHeader from './Header';
+    import AdminFooter from './Footer';
+    import AdminSidebar from './Sidebar';
+    import AdminErrorLayout from './ErrorLayout';
 
     import { mapGetters } from 'vuex';
     import { types } from '@core/store/types';
 
     export default {
         components: {
-            Header,
-            Footer,
-            Sidebar,
-            ErrorLayout
+            AdminHeader,
+            AdminFooter,
+            AdminSidebar,
+            AdminErrorLayout
         },
 
         computed: {
