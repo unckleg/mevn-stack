@@ -8,7 +8,7 @@ const Routes = [
         component: Dashboard,
         beforeEnter: Guard.auth,
         meta: {
-            title: 'Admin Dashboard'
+            title: 'Dashboard'
         }
     }
 ];

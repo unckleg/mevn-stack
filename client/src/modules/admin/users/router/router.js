@@ -10,7 +10,7 @@ const Routes = [
         component: UsersList,
         beforeEnter: Guard.auth,
         meta: {
-            title: 'Admin Users'
+            title: 'Users'
         }
     },
     {
@@ -19,7 +19,7 @@ const Routes = [
         component: UserCreate,
         beforeEnter: Guard.auth,
         meta: {
-            title: 'Admin User Create'
+            title: 'User Create'
         }
     },
     {
@@ -28,7 +28,7 @@ const Routes = [
         component: UsersEdit,
         beforeEnter: Guard.auth,
         meta: {
-            title: 'Admin Users Edit'
+            title: 'User Edit'
         }
     }
 ];

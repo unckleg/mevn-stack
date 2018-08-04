@@ -56,13 +56,13 @@
                         <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                             <span>Site Content</span>
                         </li>
-                        <li>
+                        <router-link tag="li" :to="{ name: 'admin_posts'}" active-class="active">
                             <a>
                                 <b class="badge bg-info pull-right">9</b>
                                 <i class="glyphicon glyphicon-edit icon"></i>
                                 <span >Posts</span>
                             </a>
-                        </li>
+                        </router-link>
                         <li>
                             <a>
                                 <i class="glyphicon glyphicon-th-large icon"></i>
