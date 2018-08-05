@@ -58,7 +58,7 @@
                         </li>
                         <router-link tag="li" :to="{ name: 'admin_posts'}" active-class="active">
                             <a>
-                                <b class="badge bg-info pull-right">9</b>
+                                <b class="badge bg-warning pull-right">9</b>
                                 <i class="glyphicon glyphicon-edit icon"></i>
                                 <span >Posts</span>
                             </a>

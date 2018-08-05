@@ -102,7 +102,7 @@
                 this.datatable('#table', {}, 0);
             });
 
-            this.EventBus.$once('modal-confirmed', () => {
+            this.EventBus.$on('modal-confirmed', () => {
                 this.remove(this.modalData['id']);
                 this.showModal = false;
                 this.modalData = {};
