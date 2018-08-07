@@ -1,4 +1,4 @@
-import {_types} from './types';
+import { _types } from './types';
 import Service from '@core/service';
 
 let service = new Service('admin/users');

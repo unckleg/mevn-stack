@@ -162,15 +162,14 @@
         methods: {
             validateAndProcess() {
                 this.$validator.validateAll().then((result) => {
-
-                    let formData = null;
-                    if (this.file) {
-                        formData = new FormData();
-                        formData.append('avatar', this.file, this.file.name);
-                        formData.append('_id', this.$store.getters[types.getters.GET_USER]._id);
-                    }
-
                     if (result) {
+                        let formData = null;
+                        if (this.file) {
+                            formData = new FormData();
+                            formData.append('avatar', this.file, this.file.name);
+                            formData.append('_id', this.$store.getters[types.getters.GET_USER]._id);
+                        }
+
                         this.EventBus.$emit(this.formAction, formData);
                     }
                 });
