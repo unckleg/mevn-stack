@@ -55,17 +55,6 @@
     export default {
         name: 'admin-auth',
 
-        data () {
-            return {
-                user: {
-                    username: '',
-                    password: ''
-                },
-
-                message: ''
-            }
-        },
-
         methods: {
             authenticate() {
                 const {username, password} = this.user;
@@ -74,6 +63,17 @@
                 }).catch(err => {
                     this.message = err.message;
                 });
+            }
+        },
+
+        data () {
+            return {
+                user: {
+                    username: '',
+                    password: ''
+                },
+
+                message: ''
             }
         }
     }

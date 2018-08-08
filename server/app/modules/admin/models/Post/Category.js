@@ -10,6 +10,6 @@ const categorySchema = mongoose.Schema({
         type: String,
         required: false
     }
-}, { createdAt: 'created_at', updatedAt: 'updated_at' });
+}, { createdAt: 'created_at', updatedAt: 'updated_at', collection: 'post_category' });
 
 mongoose.model('PostCategory', categorySchema);

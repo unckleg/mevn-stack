@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const models = require('@Models');
 
 require('@Admin/models/Post/Tag');
 require('@Admin/models/Post/Comment');
@@ -27,8 +28,7 @@ const postSchema = mongoose.Schema({
     status: {
         type: Schema.Types.ObjectId,
         ref: 'PostStatus',
-        required: true,
-        default: 1
+        required: true
     },
 
     publish_date: {
@@ -36,7 +36,7 @@ const postSchema = mongoose.Schema({
         default: Date.now
     },
 
-    user_id: {
+    postedBy: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
@@ -48,6 +48,6 @@ const postSchema = mongoose.Schema({
 
     categories: [mongoose.model('PostCategory').schema]
 
-}, { createdAt: 'created_at', updatedAt: 'updated_at' });
+}, { createdAt: 'created_at', updatedAt: 'updated_at', collection: 'post' });
 
 mongoose.model('Post', postSchema);

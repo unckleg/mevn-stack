@@ -7,19 +7,33 @@ methods.datatable = (selector, options = {}, timeout = 500) => {
     }, timeout);
 };
 
+methods.select2 = (selector, options = {}) => {
+    $(selector).select2(options);
+};
+
+methods.datepicker = () => {};
+
+methods.datetimepicker = () => {};
+
+methods.editor = (selector, options = {}) => {
+    $(selector).froalaEditor(options);
+};
+
 methods.addValidationRules = (vm, rules, exclude = []) => {
     let _ = require('lodash');
     for (let ruleName in rules) {
-        if (!exclude.includes(ruleName)) {
-            let validationRuleObj = rules[ruleName];
-            validationRuleObj.clonedState = _.cloneDeep(vm.$store.state);
-            vm.$validator.extend(ruleName, validationRuleObj);
+        if (rules.hasOwnProperty(ruleName)) {
+            if (!exclude.includes(ruleName)) {
+                let validationRuleObj = rules[ruleName];
+                validationRuleObj.clonedState = _.cloneDeep(vm.$store.state);
+                vm.$validator.extend(ruleName, validationRuleObj);
+            }
         }
     }
 };
 
 export default {
-    data: function() {
+    data: () => {
         return {
             get EventBus() {
                 return EventBus;

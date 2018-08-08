@@ -5,12 +5,12 @@
 </template>
 
 <script>
+    import store from './store';
+    import { types } from './modules/core/store/types';
+
     import Admin from './modules/admin/components/Layout'
     import Site from './modules/site/components/Layout'
     import Auth from './modules/admin/auth/views/Auth';
-
-    import store from './store';
-    import {types} from './modules/core/store/types';
 
     export default {
         computed: {

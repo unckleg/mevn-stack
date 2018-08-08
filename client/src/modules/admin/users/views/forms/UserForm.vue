@@ -116,7 +116,6 @@
 
     export default {
         name: 'admin-user-form',
-
         components: {
             AdminInputError
         },
@@ -150,15 +149,6 @@
             }
         },
 
-        created() {
-            if (this.formAction === types.actions.UPDATE_USER) {
-                this.shouldValidate.password = false;
-                this.shouldValidate.confirm_password = false;
-            }
-
-            this.addValidationRules(this, rules);
-        },
-
         methods: {
             validateAndProcess() {
                 this.$validator.validateAll().then((result) => {
@@ -180,6 +170,15 @@
                 this.file = file;
                 this.filePreview = URL.createObjectURL(file);
             }
+        },
+
+        created() {
+            if (this.formAction === types.actions.UPDATE_USER) {
+                this.shouldValidate.password = false;
+                this.shouldValidate.confirm_password = false;
+            }
+
+            this.addValidationRules(this, rules);
         }
     }
 </script>

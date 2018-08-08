@@ -14,6 +14,7 @@ const router = (app) => {
     // Authorization middleware
     // TODO: Move passport to middleware module
     app.use(passport.authenticate('jwt', config.session));
+    app.route(endpoint).post(postsController.list(PostModel));
 };
 
 module.exports = router;

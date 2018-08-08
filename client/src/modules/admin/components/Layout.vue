@@ -25,8 +25,11 @@
     @import './../../../../static/vendor/font-awesome/css/font-awesome.min.css';
     @import './../../../../static/vendor/simple-line-icons/css/simple-line-icons.css';
     @import './../../../../static/vendor/jquery/bootstrap/dist/css/bootstrap.css';
+    @import './../../../../static/vendor/wysiwyg/froala.min.css';
+    @import './../../../../static/vendor/wysiwyg/froala_style.min.css';
     @import './../../../../static/css/app.min.css';
     @import './../../../../static/vendor/jquery/datatable/datatable.bootstrap.css';
+    @import './../../../../static/vendor/select2/select2.css';
     @import './../../../../static/css/custom.css';
 </style>
 

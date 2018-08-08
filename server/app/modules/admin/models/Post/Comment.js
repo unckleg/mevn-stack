@@ -19,6 +19,6 @@ const commentSchema = mongoose.Schema({
         type: String,
         required: true
     }
-}, { createdAt: 'created_at', updatedAt: 'updated_at' });
+}, { createdAt: 'created_at', updatedAt: 'updated_at', collection: 'post_comment' });
 
 mongoose.model('PostComment', commentSchema);

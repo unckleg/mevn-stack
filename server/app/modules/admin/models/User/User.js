@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const SchemaOptions = {
-    createdAt: 'created_at', updatedAt: 'updated_at'
-};
-
 const Schema = mongoose.Schema({
     username: {
         type: String,
@@ -50,7 +46,7 @@ const Schema = mongoose.Schema({
         default: false
     }
 
-}, SchemaOptions);
+}, { createdAt: 'created_at', updatedAt: 'updated_at', collection: 'user' });
 
 Schema.pre('save', function (next) {
     const user = this;

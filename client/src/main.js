@@ -5,6 +5,8 @@ import helpers from '@util/helpers';
 import App from './App.vue';
 import mixin from '@util/mixin';
 import VeeValidate from 'vee-validate';
+import select2 from 'select2';
+import tags from 'bootstrap-tagsinput';
 
 Vue.config.productionTip = false;
 Vue.mixin(mixin);

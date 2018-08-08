@@ -1,6 +1,8 @@
 import { types } from './types';
+
 export const initialState = () => {
     return {
+        posts: {}
     }
 };
 

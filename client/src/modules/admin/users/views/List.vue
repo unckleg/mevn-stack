@@ -13,7 +13,7 @@
                     User List
                 </div>
                 <div class="table-responsive">
-                    <table id="table" class="table table-striped b-t b-b">
+                    <table id="users-table" class="table table-striped b-t b-b">
                         <thead>
                             <tr>
                                 <th style="width: 5%">#</th>
@@ -90,6 +90,13 @@
             })
         },
 
+        methods: {
+            async remove(id) {
+                await this.$store.dispatch(types.actions.DELETE_USER, id);
+                this.$store.dispatch(types.actions.FETCH_USERS);
+            }
+        },
+
         data() {
             return {
                 showModal: false,
@@ -99,7 +106,7 @@
 
         created () {
             this.$store.dispatch(types.actions.FETCH_USERS).then(() => {
-                this.datatable('#table', {}, 0);
+                this.datatable('#users-table', {}, 0);
             });
 
             this.EventBus.$on('modal-confirmed', () => {
@@ -107,23 +114,11 @@
                 this.showModal = false;
                 this.modalData = {};
             });
-        },
-
-        methods: {
-            async remove(id) {
-                await this.$store.dispatch(types.actions.DELETE_USER, id);
-                this.$store.dispatch(types.actions.FETCH_USERS);
-            }
         }
     }
 </script>
 
 <style>
-    .fadeIn-transition {
-        transition: opacity 0.3s linear;
-    }
-
-    .fadeIn-enter, .fadeIn-leave {
-        opacity: 0;
-    }
+    .fadeIn-transition { transition: opacity 0.3s linear; }
+    .fadeIn-enter, .fadeIn-leave { opacity: 0; }
 </style>
