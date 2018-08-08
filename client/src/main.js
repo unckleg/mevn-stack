@@ -23,13 +23,11 @@ new Vue({
     template: '<App/>',
 
     created() {
-        document.title = router.currentRoute.meta.title;
         helpers.resolveModuleLayout(store, router);
     },
 
     watch: {
         '$route' (to, from) {
-            document.title = router.currentRoute.meta.title;
             helpers.resolveModuleLayout(store, router);
         }
     }
