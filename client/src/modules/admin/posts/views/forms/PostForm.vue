@@ -12,9 +12,11 @@
                                    placeholder="Enter post title"
                                    autocomplete="off"
                                    name="title"
+                                   v-model="title"
                                    v-validate="'required'"
                             >
-                            <admin-input-error :errorBag="errors" :fieldName="'title'"></admin-input-error>
+                            <admin-input-error :errorBag="errors" :fieldName="'title'">
+                            </admin-input-error>
                         </div>
 
                         <div class="form-group">
@@ -24,9 +26,13 @@
                                    class="form-control"
                                    placeholder="Enter post content"
                                    name="text"
-                                   v-validate="'required'">
+                                   v-model="text"
+                                   v-validate="'required'"
+                                   :data-state-namespace="stateNamespace"
+                                   data-state-mutator="post">
                             </textarea>
-                            <admin-input-error :errorBag="errors" :fieldName="'text'"></admin-input-error>
+                            <admin-input-error :errorBag="errors" :fieldName="'text'">
+                            </admin-input-error>
                         </div>
                     </div>
                 </div>
@@ -38,18 +44,26 @@
                         <div class="form-group">
                             <label>Publish Date</label>
                             <input type="text"
-                                   class="form-control"
+                                   class="form-control datetimepicker"
                                    autocomplete="off"
                                    name="publish_date"
+                                   v-model="publish_date"
                                    v-validate="'required'"
+                                   :data-state-namespace="stateNamespace"
+                                   data-state-mutator="post"
                             >
-                            <admin-input-error :errorBag="errors" :fieldName="'publish_date'"></admin-input-error>
+                            <admin-input-error :errorBag="errors" :fieldName="'publish_date'">
+                            </admin-input-error>
                         </div>
                         <div class="form-group">
                             <label>Categories</label>
                             <select class="form-control select2"
                                     name="categories"
+                                    multiple="multiple"
                                     v-validate="'required'"
+                                    v-model="categories"
+                                    :data-state-namespace="stateNamespace"
+                                    data-state-mutator="post"
                             >
                                 <option value="AK">Alaska</option>
                                 <option value="HI">Hawaii</option>
@@ -58,7 +72,8 @@
                                 <option value="OR">Oregon</option>
                                 <option value="WA">Washington</option>
                             </select>
-                            <admin-input-error :errorBag="errors" :fieldName="'categories'"></admin-input-error>
+                            <admin-input-error :errorBag="errors" :fieldName="'categories'">
+                            </admin-input-error>
                         </div>
                         <div class="form-group">
                             <label>Tags</label>
@@ -67,16 +82,22 @@
                                    autocomplete="off"
                                    name="tags"
                                    data-role="tagsinput"
+                                   v-model="tags"
                                    v-validate="'required'"
+                                   :data-state-namespace="stateNamespace"
+                                   data-state-mutator="post"
                             >
-                            <admin-input-error :errorBag="errors" :fieldName="'tags'"></admin-input-error>
+                            <admin-input-error :errorBag="errors" :fieldName="'tags'">
+                            </admin-input-error>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading font-bold">Media</div>
+                    <div class="panel-heading font-bold">
+                        Media
+                    </div>
                     <div class="panel-body">
                         <div class="form-group">
                             <label>Image</label>
@@ -94,29 +115,31 @@
 </template>
 
 <style lang="scss">
-    .fr-toolbar {
-        border-top: transparent;
-    }
-
     @import './../../../../../../static/vendor/wysiwyg/froala.min.css';
     @import './../../../../../../static/vendor/wysiwyg/froala_style.min.css';
 </style>
 
 <script>
-    require('./../../../../../../static/vendor/wysiwyg/froala.min');
-
     import AdminInputError from '@modules/admin/components/ErrorInput';
+
+    import { types, ns } from './../../store/types';
+    import { mapFields } from 'vuex-map-fields';
 
     export default {
         name: 'admin-post-form',
-
         components: {
             AdminInputError
         },
 
-        mounted() {
-            this.editor('#text-content', { heightMin: 350 });
-            this.select2('.select2');
+        computed: {
+            ...mapFields(ns, [
+                'post.title',
+                'post.text',
+                'post.tags',
+                'post.categories',
+                'post.publish_date',
+                'post.status'
+            ])
         },
 
         methods: {
@@ -125,6 +148,21 @@
 
                 });
             },
+        },
+
+        data() {
+            return {
+                stateNamespace: ns
+            }
+        },
+
+        mounted() {
+            this.editor('#text-content', { heightMin: 350 });
+            this.select2('.select2', { multiple: true});
+            this.datetimepicker('.datetimepicker');
+            this.tagsInput('[data-role="tagsinput"]');
         }
     }
+
+    require('./../../../../../../static/vendor/wysiwyg/froala.min');
 </script>

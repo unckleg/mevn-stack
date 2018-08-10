@@ -47,3 +47,7 @@
 .bootstrap-tagsinput > input {
     border: none !important;
 }
+
+.fr-toolbar {
+    border-top: transparent !important;
+}

@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap-datepicker": "^1.8.0",
     "bootstrap-tagsinput": "^0.7.1",
     "datatables": "^1.10.18",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
     "loadash": "^1.0.0",
     "node-sass": "^4.9.2",
     "sass-loader": "^7.0.3",

@@ -1,12 +1,13 @@
-import Vue from 'vue'
-import router from './router'
+import Vue from 'vue';
+import router from './router';
 import store from './store';
-import helpers from '@util/helpers';
 import App from './App.vue';
+import helpers from '@util/helpers';
 import mixin from '@util/mixin';
 import VeeValidate from 'vee-validate';
-import select2 from 'select2';
-import tags from 'bootstrap-tagsinput';
+
+// vendor imports
+helpers.loadVendors();
 
 Vue.config.productionTip = false;
 Vue.mixin(mixin);

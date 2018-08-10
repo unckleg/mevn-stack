@@ -2,7 +2,15 @@ import { types } from './types';
 
 export const initialState = () => {
     return {
-        posts: {}
+        posts: {},
+        post: {
+            title: '',
+            text: '',
+            status: '',
+            publish_date: '',
+            tags: [],
+            categories: []
+        }
     }
 };
 

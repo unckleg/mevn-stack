@@ -41,4 +41,13 @@ helpers.removeNamespace = (namespace, types) => {
     }, {});
 };
 
+helpers.loadVendors = () => {
+    require('select2');
+    require('select2/dist/css/select2.css');
+    require('bootstrap-tagsinput');
+    require('bootstrap-datepicker');
+    require('eonasdan-bootstrap-datetimepicker');
+    require('eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css');
+};
+
 export default helpers;
